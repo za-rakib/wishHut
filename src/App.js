@@ -1,10 +1,14 @@
 import "./App.css";
+import Announcement from "./components/Announcement/Announcement";
+import Slider from "./components/Slider/Slider";
 import Home from "./pages/Home/Home";
- 
+
 function App() {
-  return (
+  return ( 
     <div className="App">
-     <Home/>
+      <Announcement />
+      <Home />
+      <Slider/>
     </div>
   );
 }
