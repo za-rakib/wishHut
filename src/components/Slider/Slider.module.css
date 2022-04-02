@@ -6,10 +6,11 @@
   overflow: hidden;
 }
 .sliderArrow {
-  width: 50px;
-  height: 50px;
-  background-color: #ffe7e7;
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
   border-radius: 50%;
+  border:1px solid rgb(105, 105, 105);
   -webkit-border-radius: 50;
   -moz-border-radius: 50;
   -ms-border-radius: 50;
@@ -38,6 +39,7 @@
 }
 .imgContainer img {
   height: 100%;
+  padding: 2% 10%;
 }
 .infoContainer {
   flex: 1;
@@ -54,7 +56,9 @@
 }
 .infoContainer button {
   padding: 10px;
-  font-size: 1.7rem;
-  background-color: transparent;
+  font-size: 1.3rem;
+  background-color: teal;
   cursor: pointer;
+  color: #ffffff;
+  border: 1px solid teal
 }

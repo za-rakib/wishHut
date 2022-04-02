@@ -1,14 +1,9 @@
-import "./App.css";
-import Announcement from "./components/Announcement/Announcement";
-import Slider from "./components/Slider/Slider";
 import Home from "./pages/Home/Home";
-
+import './App.css';
 function App() {
-  return ( 
+  return (
     <div className="App">
-      <Announcement />
       <Home />
-      <Slider/>
     </div>
   );
 }

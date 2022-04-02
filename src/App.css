@@ -6,4 +6,6 @@
 }
 body {
   background: var(--color-bg);
+  margin: 0;
+  padding: 0;
 }
