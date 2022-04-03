@@ -24,7 +24,7 @@ const Filter = styled.div`
 const FilterText = styled.span`
   font-size: 20px;
   font-weight: 600;
-  margin-right: 20px;
+  margin-right: 22px;
 `;
 
 const Select = styled.select`
