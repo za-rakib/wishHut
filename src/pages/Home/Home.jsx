@@ -1,19 +1,20 @@
 import React from "react";
-import Navbar from "../../components/Navbar/Navbar";
-import Announcement from "../../components/Announcement/Announcement";
-import Slider from "../../components/Slider/Slider";
-import Categories from "../../components/Categories/Categories";
-import Products from "../../components/Products/Products";
-import Newsletter from "../../components/NewSlater/Newsletter";
-import Footer from "../../components/Footer/Footer";
+import Navbar from "../../components/Shared/Navbar/Navbar";
+import Announcement from "../../components/Shared/Announcement/Announcement";
+import Products from "../../components/Home/Products/Products";
+import Newsletter from "../../components/Home/NewSlater/Newsletter";
+import Footer from "../../components/Home/Footer/Footer";
+import Slider from "../../components/Home/Slider/Slider";
+import Categories from '../../components/Home/Categories/Categories';
+
 
 const Home = () => {
   return (
     <div>
       <Announcement />
       <Navbar />
-      <Slider />
-      <Categories />
+      <Slider/>
+      <Categories/>
       <Products />
       <Newsletter/>
       <Footer/>

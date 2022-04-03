@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { popularProducts } from "../../assets/data/slideData";
+import { popularProducts } from "../../../assets/data/slideData";
 import { Product } from "./Product";
 
 // styled components

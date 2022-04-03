@@ -1,7 +1,7 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import React, { useState } from "react";
 import classes from "./Slider.module.css";
-import { slideItems } from "../../assets/data/slideData";
+import { slideItems } from "../../../assets/data/slideData";
 import styled from "styled-components";
 
 const Wrapper = styled.div`

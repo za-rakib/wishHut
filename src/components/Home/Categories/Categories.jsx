@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Categories.module.css";
-import { categories } from "../../assets/data/slideData";
+import { categories } from "../../../assets/data/slideData";
 import Category from "./Category";
 // const Container = styled.div``;
 

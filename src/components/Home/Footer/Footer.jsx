@@ -41,6 +41,7 @@ const SocialIcon = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 20px;
+  cursor: pointer;
 `;
 
 const Center = styled.div`
@@ -124,7 +125,7 @@ const Footer = () => {
         <Title>Contact</Title>
         <ContactItem>
           <Room style={{ marginRight: "10px" }} /> 1214 Shobujbag , South Dhaka,
-          Bangladesh
+          Bangladesh.
         </ContactItem>
         <ContactItem>
           <Phone style={{ marginRight: "10px" }} /> +8801517037484
