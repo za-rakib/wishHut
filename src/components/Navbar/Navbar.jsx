@@ -19,8 +19,8 @@ const Left = styled.div`
   display: flex;
   align-items: center;
 `;
-const Language = styled.div`
-  font-size: 12px;
+const Language = styled.p`
+  font-size: 15px;
   cursor: pointer;
 `;
 const SearchContainer = styled.div`
@@ -49,7 +49,7 @@ const Right = styled.div`
   justify-content: flex-end;
 `;
 const MenuItem = styled.div`
-  font-size: 14px;
+  font-size: 15px;
   cursor: pointer;
   margin-left: 20px;
 `;
