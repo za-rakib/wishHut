@@ -3,7 +3,7 @@ import Navbar from "../../components/Shared/Navbar/Navbar";
 import Announcement from "../../components/Shared/Announcement/Announcement";
 import Products from "../../components/Home/Products/Products";
 import Newsletter from "../../components/Home/NewSlater/Newsletter";
-import Footer from "../../components/Home/Footer/Footer";
+import Footer from "../../components/Shared/Footer/Footer";
 import Slider from "../../components/Home/Slider/Slider";
 import Categories from '../../components/Home/Categories/Categories';
 

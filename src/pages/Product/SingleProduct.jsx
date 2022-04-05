@@ -1,7 +1,7 @@
 import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
 import shopping from "../../assets/shopping.jpg";
-import Footer from "../../components/Home/Footer/Footer";
+import Footer from "../../components/Shared/Footer/Footer";
 import Newsletter from "../../components/Home/NewSlater/Newsletter";
 import Announcement from "../../components/Shared/Announcement/Announcement";
 import Navbar from "../../components/Shared/Navbar/Navbar";

@@ -1,7 +1,7 @@
 import { Add, Remove } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
-import Footer from "../../components/Home/Footer/Footer";
+import Footer from "../../components/Shared/Footer/Footer";
 import Announcement from "../../components/Shared/Announcement/Announcement";
 import Navbar from "../../components/Shared/Navbar/Navbar";
 
@@ -43,6 +43,7 @@ const TopText = styled.span`
 const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
+  margin: 30px 0 20px 0;
 `;
 
 const Info = styled.div`
@@ -110,13 +111,45 @@ const ProductPrice = styled.span`
 
 const Hr = styled.hr`
   border: none;
-  background-color:#d9d9d9;
-    height: 2px;
+  background-color: #d9d9d9;
+  height: 2px;
 `;
 
 const Summary = styled.div`
   flex: 1;
+  border: 1px solid lightgray;
+  padding: 20px;
+  border-radius: 5px;
+  height: 50vh;
+  margin: 20px 0 0 10px;
 `;
+
+const SummaryTitle = styled.h1`
+  font-weight: 200;
+`;
+
+const SummaryItem = styled.div`
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  font-weight: ${(props) => props.type === "total" && 500};
+  font-size: ${(props) => props.type === "total" && "24px"};
+`;
+
+const SummaryItemText = styled.span``;
+
+const SummaryItemPrice = styled.span``;
+
+const Button = styled.button`
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+  border: none;
+`;
+
 const Cart = () => {
   return (
     <Container>
@@ -191,7 +224,26 @@ const Cart = () => {
               </PriceDetail>
             </Product>
           </Info>
-          <Summary>Summary</Summary>
+          <Summary>
+            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
+            <SummaryItem>
+              <SummaryItemText>Subtotal</SummaryItemText>
+              <SummaryItemPrice>$100</SummaryItemPrice>
+            </SummaryItem>
+            <SummaryItem>
+              <SummaryItemText>Estimated Shipping</SummaryItemText>
+              <SummaryItemPrice>$6.00</SummaryItemPrice>
+            </SummaryItem>
+            <SummaryItem>
+              <SummaryItemText>Shipping Discount</SummaryItemText>
+              <SummaryItemPrice>$-5.00</SummaryItemPrice>
+            </SummaryItem>
+            <SummaryItem type="total">
+              <SummaryItemText>Total</SummaryItemText>
+              <SummaryItemPrice>$101</SummaryItemPrice>
+            </SummaryItem>
+            <Button>CHECKOUT NOW</Button>
+          </Summary>
         </Bottom>
       </Wrapper>
       <Footer />

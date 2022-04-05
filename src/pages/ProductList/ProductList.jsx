@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Navbar from "../../components/Shared/Navbar/Navbar";
 import Announcement from "../../components/Shared/Announcement/Announcement";
 import Newsletter from "../../components/Home/NewSlater/Newsletter";
-import Footer from "../../components/Home/Footer/Footer";
+import Footer from "../../components/Shared/Footer/Footer";
 import Products from "../../components/Home/Products/Products";
 
 // styled components
