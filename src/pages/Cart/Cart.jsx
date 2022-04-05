@@ -117,7 +117,7 @@ const Hr = styled.hr`
 
 const Summary = styled.div`
   flex: 1;
-  border: 1px solid lightgray;
+  border: 1.1px solid lightgray;
   padding: 20px;
   border-radius: 5px;
   height: 50vh;
