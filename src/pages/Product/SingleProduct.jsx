@@ -5,6 +5,7 @@ import Footer from "../../components/Shared/Footer/Footer";
 import Newsletter from "../../components/Home/NewSlater/Newsletter";
 import Announcement from "../../components/Shared/Announcement/Announcement";
 import Navbar from "../../components/Shared/Navbar/Navbar";
+import { mobile } from "../../responsive";
 
 // styled components
 const Container = styled.div``;
@@ -12,6 +13,7 @@ const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
+  ${mobile({ padding: "10px",flexDirection:"column" })}
 `;
 
 const ImageContainer = styled.div`
@@ -22,11 +24,13 @@ const Image = styled.img`
   width: 100%;
   height: 90vh;
   object-fit: cover;
+  ${mobile({height:"35vh"})}
 `;
 
 const InfoContainer = styled.div`
   flex: 1;
   padding: 0 50px;
+  ${mobile({padding: "10px"})}
 `;
 
 const Title = styled.h1`
@@ -47,6 +51,7 @@ const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 30px 0;
+  ${mobile({width:"100%"})}
 `;
 
 const Filter = styled.div`
@@ -80,6 +85,7 @@ const AddContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 50%;
+  ${mobile({width:"100%"})}
 `;
 
 const AmountContainer = styled.div`
@@ -106,7 +112,7 @@ const Button = styled.button`
   cursor: pointer;
   font-weight: 500;
   font-size: 16px;
-  transition: .5s;
+  transition: 0.5s;
 
   &:hover {
     background-color: teal;

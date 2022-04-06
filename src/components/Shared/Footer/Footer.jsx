@@ -9,16 +9,19 @@ import {
 } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
+import { mobile } from "../../../responsive";
 
 // style components
 const Container = styled.div`
   display: flex;
+  ${mobile({ flexDirection: "column" })}
 `;
 const Left = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
   padding: 20px;
+  ${mobile({ textAlign: "center" })}
 `;
 
 const Logo = styled.h1``;
@@ -29,6 +32,7 @@ const Desc = styled.p`
 
 const SocialContainer = styled.div`
   display: flex;
+  ${mobile({ justifyContent: "center" })}
 `;
 
 const SocialIcon = styled.div`
@@ -47,6 +51,7 @@ const SocialIcon = styled.div`
 const Center = styled.div`
   flex: 1;
   padding: 20px;
+  ${mobile({ display: "none" })}
 `;
 
 const Title = styled.h3`
@@ -69,15 +74,17 @@ const ListItem = styled.li`
 const Right = styled.div`
   flex: 1;
   padding: 20px;
+  ${mobile({ backgroundColor: "#fcf5f5", textAlign: "center" })}
 `;
 const ContactItem = styled.div`
-margin-bottom: 15px;
-display: flex;
-align-items: center;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  ${mobile({ justifyContent: "center" })}
 `;
 
 const Payment = styled.img`
-width: 50%;
+  width: 50%;
 `;
 const Footer = () => {
   return (

@@ -5,6 +5,7 @@ import Announcement from "../../components/Shared/Announcement/Announcement";
 import Newsletter from "../../components/Home/NewSlater/Newsletter";
 import Footer from "../../components/Shared/Footer/Footer";
 import Products from "../../components/Home/Products/Products";
+import { mobile } from "../../responsive";
 
 // styled components
 const Container = styled.div``;
@@ -20,16 +21,19 @@ const FilterContainer = styled.div`
 
 const Filter = styled.div`
   margin: 20px;
+  ${mobile({ margin: "0 20px", display: "flex", flexDirection: "column" })}
 `;
 const FilterText = styled.span`
   font-size: 20px;
   font-weight: 600;
   margin-right: 22px;
+  ${ mobile({marginRight:"0px"})}
 `;
 
 const Select = styled.select`
   margin-right: 20px;
   padding: 10px;
+  ${ mobile({margin:"10px 0"})}
 `;
 
 const Option = styled.option``;

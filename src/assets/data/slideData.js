@@ -3,6 +3,7 @@ import slide2 from "../sl2.jpg";
 import slide3 from "../sl3-removebg-preview.png";
 import hudi from "../hudi.png";
 import tshirt from "../tshirt.png";
+
 export const slideItems = [
   {
     id: 1,
@@ -44,6 +45,7 @@ export const categories = [
       title: "LIGHT JACKETS",
     },
   ];
+
   export const popularProducts = [
     {
       id:1,

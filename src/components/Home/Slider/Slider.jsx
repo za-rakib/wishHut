@@ -3,6 +3,16 @@ import React, { useState } from "react";
 import classes from "./Slider.module.css";
 import { slideItems } from "../../../assets/data/slideData";
 import styled from "styled-components";
+import { mobile } from "../../../responsive";
+
+const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  ${mobile({ display: "none" })}
+`;
 
 const Wrapper = styled.div`
   height: 100%;
@@ -23,7 +33,7 @@ const Slide = styled.div`
 
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
-  console.log("slideIndex", slideIndex);
+  // console.log("slideIndex", slideIndex);
   const handleClick = (direction) => {
     if (direction === "left") {
       setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
@@ -32,7 +42,7 @@ const Slider = () => {
     }
   };
   return (
-    <div className={classes.sliderContainer}>
+    <Container>
       <Arrow
         direction="left"
         className={classes.sliderArrow}
@@ -62,7 +72,7 @@ const Slider = () => {
       >
         <ArrowRightOutlined />
       </Arrow>
-    </div>
+    </Container>
   );
 };
 

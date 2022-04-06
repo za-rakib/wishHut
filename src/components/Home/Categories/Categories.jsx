@@ -1,16 +1,23 @@
 import React from "react";
-import classes from "./Categories.module.css";
 import { categories } from "../../../assets/data/slideData";
 import Category from "./Category";
-// const Container = styled.div``;
+import styled from "styled-components";
+import { mobile } from "../../../responsive";
+
+const Container = styled.div`
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  ${mobile({ padding: 0, flexDirection: "column" })}
+`;
 
 const Categories = () => {
   return (
-    <div className={classes.categoryContainer}>
-      {categories.map((item,index) => (
+    <Container>
+      {categories.map((item, index) => (
         <Category item={item} key={index} />
       ))}
-    </div>
+    </Container>
   );
 };
 

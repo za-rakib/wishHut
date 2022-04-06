@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import cover from "../../assets/web_shopping.svg";
+import { mobile } from '../../responsive';
 // style components
 const Container = styled.div`
   width: 100vw;
@@ -20,6 +21,7 @@ const Wrapper = styled.div`
 padding:20px;
 width:40%;
 background-color:#8f88f1;
+${mobile({width:"80%"})}
 `;
 
 const Title = styled.h1`
@@ -40,6 +42,7 @@ min-width:40%;
 margin:20px 10px 0 0;
 padding:10px;
 font-size:16px;
+${mobile({fontSize:'12px'})}
 `;
 
 const Agreement = styled.span`
@@ -62,6 +65,8 @@ border-radius:5px;
     background-color:#535267;
     color:#fff;
 }
+${mobile({fontSize:'14px',padding:"8px 8px"})}
+
 `;
 
 const Register = () => {
