@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import Badge from "@material-ui/core/Badge";
 import { mobile } from "../../../responsive";
+import { Link } from "react-router-dom";
 
 // styled components
 const Container = styled.div`
@@ -15,7 +16,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  ${mobile({ padding: "5px 0", alignItems: "center",marginTop: "5px"})}
+  ${mobile({ padding: "5px 0", alignItems: "center", marginTop: "5px" })}
 `;
 const Left = styled.div`
   flex: 1;
@@ -36,6 +37,7 @@ const SearchContainer = styled.div`
 `;
 const Input = styled.input`
   border: none;
+  padding: 5px;
   ${mobile({ width: "50px" })}
 `;
 const Center = styled.div`
@@ -45,8 +47,10 @@ const Center = styled.div`
 `;
 const Logo = styled.h1`
   font-weight: bold;
+  text-decoration: none;
   ${mobile({ fontSize: "18px", marginLeft: "5px" })}
 `;
+
 const Right = styled.div`
   flex: 1;
   display: flex;
@@ -74,7 +78,11 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>WISH HUT</Logo>
+          <Logo>
+            <Link style={{ textDecoration: "none", color: "black" }} to="/">
+              WISH HUT
+            </Link>
+          </Logo>
         </Center>
         <Right>
           <MenuItem>REGISTER</MenuItem>

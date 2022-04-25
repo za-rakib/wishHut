@@ -10,7 +10,7 @@
   height: 40px;
   background-color: #ffffff;
   border-radius: 50%;
-  border:1px solid rgb(105, 105, 105);
+  border: 1px solid rgb(105, 105, 105);
   -webkit-border-radius: 50;
   -moz-border-radius: 50;
   -ms-border-radius: 50;
@@ -60,5 +60,5 @@
   background-color: teal;
   cursor: pointer;
   color: #ffffff;
-  border: 1px solid teal
+  border: 1px solid teal;
 }

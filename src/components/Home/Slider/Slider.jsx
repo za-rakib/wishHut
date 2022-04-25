@@ -1,7 +1,7 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import React, { useState } from "react";
 import classes from "./Slider.module.css";
-import { slideItems } from "../../../assets/data/slideData";
+import { slideItems } from "../../../assets/data/data";
 import styled from "styled-components";
 import { mobile } from "../../../responsive";
 
@@ -11,7 +11,7 @@ const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
-  ${mobile({ display: "none" })}
+  ${mobile({ display: "none" })};
 `;
 
 const Wrapper = styled.div`

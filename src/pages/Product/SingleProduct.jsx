@@ -6,6 +6,7 @@ import Newsletter from "../../components/Home/NewSlater/Newsletter";
 import Announcement from "../../components/Shared/Announcement/Announcement";
 import Navbar from "../../components/Shared/Navbar/Navbar";
 import { mobile } from "../../responsive";
+import { useParams } from "react-router-dom";
 
 // styled components
 const Container = styled.div``;
@@ -13,7 +14,7 @@ const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
-  ${mobile({ padding: "10px",flexDirection:"column" })}
+  ${mobile({ padding: "10px", flexDirection: "column" })}
 `;
 
 const ImageContainer = styled.div`
@@ -24,13 +25,13 @@ const Image = styled.img`
   width: 100%;
   height: 90vh;
   object-fit: cover;
-  ${mobile({height:"35vh"})}
+  ${mobile({ height: "35vh" })}
 `;
 
 const InfoContainer = styled.div`
   flex: 1;
   padding: 0 50px;
-  ${mobile({padding: "10px"})}
+  ${mobile({ padding: "10px" })}
 `;
 
 const Title = styled.h1`
@@ -51,7 +52,7 @@ const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 30px 0;
-  ${mobile({width:"100%"})}
+  ${mobile({ width: "100%" })}
 `;
 
 const Filter = styled.div`
@@ -85,7 +86,7 @@ const AddContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 50%;
-  ${mobile({width:"100%"})}
+  ${mobile({ width: "100%" })}
 `;
 
 const AmountContainer = styled.div`
@@ -122,10 +123,12 @@ const Button = styled.button`
 `;
 
 const SingleProduct = () => {
+  const id = useParams().id;
+ 
   return (
     <Container>
-      <Navbar />
       <Announcement />
+      <Navbar />
       <Wrapper>
         <ImageContainer>
           <Image src={shopping} />

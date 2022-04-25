@@ -14,7 +14,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 70px;
+  font-size: 50px;
   margin-bottom: 20px;
   ${mobile({ fontSize: "40px" })}
 `;

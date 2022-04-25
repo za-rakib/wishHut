@@ -1,5 +1,5 @@
 import React from "react";
-import { categories } from "../../../assets/data/slideData";
+import { categories } from "../../../assets/data/data";
 import Category from "./Category";
 import styled from "styled-components";
 import { mobile } from "../../../responsive";
