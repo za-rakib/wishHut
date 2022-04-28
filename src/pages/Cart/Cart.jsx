@@ -1,16 +1,24 @@
 import { Add, Remove } from "@material-ui/icons";
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Footer from "../../components/Shared/Footer/Footer";
 import Announcement from "../../components/Shared/Announcement/Announcement";
 import Navbar from "../../components/Shared/Navbar/Navbar";
 import { mobile } from "../../responsive";
+import { useSelector } from "react-redux";
+import StripeCheckout from "react-stripe-checkout";
+import { useState } from "react";
+import logo from "../../assets/image/logo2.png";
+import { useNavigate } from "react-router-dom";
+import { userRequest } from "../../requestMethod";
 
+const KEY = process.env.REACT_APP_STRIPE_KEY;
 // style components
 const Container = styled.div``;
 
 const Wrapper = styled.div`
   padding: 20px;
+  background-color: #f5ffff;
   ${mobile({ padding: "10px" })}
 `;
 
@@ -108,13 +116,13 @@ const ProductAmountContainer = styled.div`
 const ProductAmount = styled.span`
   font-size: 20px;
   margin: 5px;
-  ${mobile({margin:'5px 15px'})}
+  ${mobile({ margin: "5px 15px" })}
 `;
 
 const ProductPrice = styled.span`
   font-size: 20px;
   font-weight: 300;
-  ${mobile({margin:'7px 0px'})}
+  ${mobile({ margin: "7px 0px" })}
 `;
 
 const Hr = styled.hr`
@@ -159,10 +167,34 @@ const Button = styled.button`
 `;
 
 const Cart = () => {
+  const cart = useSelector((state) => state.cart);
+  const navigate = useNavigate();
+  const [stripeToken, setStripeToken] = useState(null);
+  //console.log(cart);
+
+  const onToken = async (token) => {
+    setStripeToken(await token);
+  };
+  console.log(stripeToken);
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await userRequest.post("/checkouts/payment", {
+          tokenId: stripeToken.id && stripeToken.id,
+          amount: cart.total * 100,
+        });
+        navigate("/success", { data: res.data });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    stripeToken && makeRequest();
+  }, [stripeToken, cart.total, navigate]);
+
   return (
     <Container>
-      <Navbar />
       <Announcement />
+      <Navbar />
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
@@ -176,81 +208,71 @@ const Cart = () => {
 
         <Bottom>
           <Info>
-            <Product>
-              <ProductDetail>
-                <Image src="https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_960_720.jpg" />
-                <Detail>
-                  <ProductName>
-                    <b>Product : </b> NIKE SHOES
-                  </ProductName>
-                  <ProductId>
-                    <b>ID : </b> 7578487457
-                  </ProductId>
-                  <ProductColor color="black" />
+            {cart.products.map((product, index) => (
+              <Product key={index}>
+                <ProductDetail>
+                  <Image src={product.img} />
+                  <Detail>
+                    <ProductName>
+                      <b>Product : </b> {product.title}
+                    </ProductName>
+                    <ProductId>
+                      <b>ID : </b> {product._id}
+                    </ProductId>
+                    <ProductColor color="black" />
 
-                  <ProductSize>
-                    <b>Size : </b> 35.8
-                  </ProductSize>
-                </Detail>
-              </ProductDetail>
+                    <ProductSize>
+                      <b>Size : </b> {product.size}
+                    </ProductSize>
+                  </Detail>
+                </ProductDetail>
 
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>1</ProductAmount>
-                  <Remove />
-                </ProductAmountContainer>
-                <ProductPrice>$100</ProductPrice>
-              </PriceDetail>
-            </Product>
+                <PriceDetail>
+                  <ProductAmountContainer>
+                    <Add />
+                    <ProductAmount>{product.quantity}</ProductAmount>
+                    <Remove />
+                  </ProductAmountContainer>
+                  <ProductPrice>
+                    $ {""}
+                    {product.price * product.quantity}
+                  </ProductPrice>
+                </PriceDetail>
+              </Product>
+            ))}
             <Hr />
-            <Product>
-              <ProductDetail>
-                <Image src="https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_960_720.jpg" />
-                <Detail>
-                  <ProductName>
-                    <b>Product : </b> NIKE SHOES
-                  </ProductName>
-                  <ProductId>
-                    <b>ID : </b> 7578487457
-                  </ProductId>
-                  <ProductColor color="black" />
-
-                  <ProductSize>
-                    <b>Size : </b> 35.8
-                  </ProductSize>
-                </Detail>
-              </ProductDetail>
-
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>1</ProductAmount>
-                  <Remove />
-                </ProductAmountContainer>
-                <ProductPrice>$100</ProductPrice>
-              </PriceDetail>
-            </Product>
           </Info>
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$100</SummaryItemPrice>
+              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>$6.00</SummaryItemPrice>
+              <SummaryItemPrice>$ 6.00</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>$-5.00</SummaryItemPrice>
+              <SummaryItemPrice>$ -5.00</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$101</SummaryItemPrice>
+              <SummaryItemPrice>$ {cart.total + 1}</SummaryItemPrice>
             </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
+            <StripeCheckout
+              name="Wish Hut"
+              image={logo}
+              shippingAddress
+              billingAddress
+              description={`Your total is ${""} ${cart.total}`}
+              amount={cart.total * 100}
+              token={onToken}
+              stripeKey={KEY}
+            >
+              {" "}
+              <Button>CHECKOUT NOW</Button>
+            </StripeCheckout>
           </Summary>
         </Bottom>
       </Wrapper>

@@ -1,8 +1,8 @@
-import slide1 from "../slidePic4-remove.png";
-import slide2 from "../sl2.jpg";
-import slide3 from "../sl3-removebg-preview.png";
-import hudi from "../hudi.png";
-import tshirt from "../tshirt.png";
+import slide1 from "../image/slidePic4-remove.png";
+import slide2 from "../image/sl2.jpg";
+import slide3 from "../image/sl3-removebg-preview.png";
+import hudi from "../image/hudi.png";
+import tshirt from "../image/tshirt.png";
 
 export const slideItems = [
   {

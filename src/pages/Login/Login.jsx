@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import cover from "../../assets/negative-space.jpg";
+import cover from "../../assets/image/negative-space.jpg";
 import { mobile } from '../../responsive';
 // style components
 const Container = styled.div`

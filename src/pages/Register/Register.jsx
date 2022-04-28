@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import cover from "../../assets/web_shopping.svg";
+import cover from "../../assets/image/web_shopping.svg";
 import { mobile } from '../../responsive';
 // style components
 const Container = styled.div`

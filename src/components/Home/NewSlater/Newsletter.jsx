@@ -41,7 +41,7 @@ const InputContainer = styled.div`
 
 const Input = styled.input`
   border: none;
-  flex: 8;
+  flex: 7;
   font-size: 20px;
   padding-left: 20px;
   ${mobile({

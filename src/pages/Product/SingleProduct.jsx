@@ -1,12 +1,15 @@
 import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
-import shopping from "../../assets/shopping.jpg";
 import Footer from "../../components/Shared/Footer/Footer";
 import Newsletter from "../../components/Home/NewSlater/Newsletter";
 import Announcement from "../../components/Shared/Announcement/Announcement";
 import Navbar from "../../components/Shared/Navbar/Navbar";
 import { mobile } from "../../responsive";
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { publicRequest } from "../../requestMethod";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../redux/cartRedux";
 
 // styled components
 const Container = styled.div``;
@@ -23,7 +26,7 @@ const ImageContainer = styled.div`
 
 const Image = styled.img`
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   object-fit: cover;
   ${mobile({ height: "35vh" })}
 `;
@@ -31,6 +34,7 @@ const Image = styled.img`
 const InfoContainer = styled.div`
   flex: 1;
   padding: 0 50px;
+  margin-top: 90px;
   ${mobile({ padding: "10px" })}
 `;
 
@@ -117,55 +121,90 @@ const Button = styled.button`
 
   &:hover {
     background-color: teal;
-    border: 2px solid #10008b;
+    border: 2px solid teal;
     color: #fff;
   }
 `;
 
+// main function
 const SingleProduct = () => {
   const id = useParams().id;
- 
+  const dispatch = useDispatch();
+  const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState("black");
+  const [size, setSize] = useState("S");
+
+  //   data loading
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get("/products/find/" + id);
+        setProduct(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getProduct();
+  }, [id]);
+
+  // product  quantity
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
+
+  // add to cart
+  const handleClick = () => {
+    dispatch(
+      addProduct({
+        ...product,
+        quantity,
+        color,
+        size,
+      })
+    );
+  };
+
   return (
     <Container>
       <Announcement />
       <Navbar />
       <Wrapper>
         <ImageContainer>
-          <Image src={shopping} />
+          <Image src={product.img} />
         </ImageContainer>
         <InfoContainer>
-          <Title>Denime Jmpsute</Title>
-          <Desc>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat nam
-            alias commodi repellendus, aperiam perferendis.
-          </Desc>
-          <Price>$ 20</Price>
+          <Title>{product.title}</Title>
+          <Desc>{product.desc}</Desc>
+          <Price> $ {product.price}</Price>
           <FilterContainer>
             <Filter>
-              <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="darkblue" />
-              <FilterColor color="gray" />
+              <FilterTitle> Color</FilterTitle>
+              {product.color?.map((c) => (
+                <FilterColor color={c} key={c} onClick={() => setColor(c)} />
+              ))}
             </Filter>
             <Filter>
-              <FilterTitle>Size</FilterTitle>
-              <FilterSize>
-                <FilterSizeOption>XS</FilterSizeOption>
-                <FilterSizeOption>S</FilterSizeOption>
-                <FilterSizeOption>M</FilterSizeOption>
-                <FilterSizeOption>L</FilterSizeOption>
-                <FilterSizeOption>XL</FilterSizeOption>
+              <FilterTitle> Size</FilterTitle>
+              <FilterSize onChange={(e) => setSize(e.target.value)}>
+                {product.size?.map((s) => (
+                  <FilterSizeOption key={s}>{s}</FilterSizeOption>
+                ))}
               </FilterSize>
             </Filter>
           </FilterContainer>
 
           <AddContainer>
             <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
+              <Remove onClick={() => handleQuantity("dec")} />
+              <Amount>{quantity}</Amount>
+              <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
-            <Button>Add to cart</Button>
+            <Button onClick={handleClick}>Add to cart</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
