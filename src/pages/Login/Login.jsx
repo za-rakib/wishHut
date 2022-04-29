@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import cover from "../../assets/image/negative-space.jpg";
-import { mobile } from '../../responsive';
+import { mobile } from "../../responsive";
+import { login } from "../../redux/apiCalls";
+import { useDispatch, useSelector } from "react-redux";
 // style components
 const Container = styled.div`
   width: 100vw;
@@ -24,7 +26,7 @@ const Wrapper = styled.div`
   padding: 20px;
   width: 40%;
   background-color: teal;
-  ${mobile({width:"80%"})}
+  ${mobile({ width: "80%" })}
 `;
 
 const Title = styled.h1`
@@ -52,35 +54,67 @@ const Link = styled.a`
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
+  color: #001eff;
 `;
 
 const Button = styled.button`
   width: 35%;
-  border: none;
-  padding: 15px 20px;
+  border: 3px solid #fff;
+  padding: 12px 15px;
   background-color: #fff;
   color: #000;
   margin-top: 20px;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.5s ease;
-  border-radius: 5px;
+  border-radius: 2px;
+  transition: all 1.5s ease;
+  &:disabled {
+    color: green;
+    cursor: not-allowed;
+  }
   &:hover {
-    background-color: #535267;
-    color: #fff;
+    border: 3px solid #fff;
+    color: #ffffff;
+    background-color: teal;
   }
 `;
-
+const Error = styled.span`
+  color: red;
+`;
+// main function
 const Login = () => {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const { isFetching, error } = useSelector((state) => state.user);
+
+  //  data send to redux action
+  const handleClick = (e) => {
+    e.preventDefault();
+    login(dispatch, { userName, password });
+   // console.log(userName, password);
+  };
   return (
     <Container>
       <Wrapper>
         <Title>SIGN IN</Title>
         <Form>
-          <Input placeholder="user name" />
-          <Input placeholder="password" />
-          <Button>LOGIN</Button>
-          <Link>FORGOT PASSWORD</Link>
+          <Input
+            placeholder="user name"
+            onChange={(e) => setUserName(e.target.value)}
+          />
+          <Input
+            placeholder="password"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button onClick={handleClick} disabled={isFetching}>
+            LOGIN
+          </Button>
+          {error && <Error>Something went wrong...</Error>}
+          <Link>FORGOT PASSWORD ?</Link>
+          <Link>CREATED A NEW ACCOUNT</Link>
         </Form>
       </Wrapper>
     </Container>

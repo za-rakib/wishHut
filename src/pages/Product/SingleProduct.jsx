@@ -132,8 +132,8 @@ const SingleProduct = () => {
   const dispatch = useDispatch();
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
-  const [color, setColor] = useState("black");
-  const [size, setSize] = useState("S");
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
 
   //   data loading
   useEffect(() => {

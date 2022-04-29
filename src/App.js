@@ -7,8 +7,9 @@ import Login from "./pages/Login/Login";
 import Cart from "./pages/Cart/Cart";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Success from "./pages/Success/Success";
+import { useSelector } from "react-redux";
 function App() {
-  const user = true;
+  const user = useSelector((state) => state.user.currentUser);
   return (
     <BrowserRouter>
       <Routes>
