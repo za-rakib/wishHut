@@ -4,6 +4,7 @@ import classes from "./Slider.module.css";
 import { slideItems } from "../../../assets/data/data";
 import styled from "styled-components";
 import { mobile } from "../../../responsive";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -60,7 +61,10 @@ const Slider = () => {
               <h1>{item.title}</h1>
               <p>{item.des}</p>
 
-              <button>SHOW NOW</button>
+              <Link to="/products">
+                {" "}
+                <button>SHOW NOW</button>
+              </Link>
             </div>
           </Slide>
         ))}

@@ -31,21 +31,21 @@ export const slideItems = [
 export const categories = [
     {
       id: 1,
-      img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      title: "SHIRT STYLE!",
+      img: "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      title: "Women Item",
       cat:'women'
     },
     {
       id: 2,
       img: "https://images.pexels.com/photos/842811/pexels-photo-842811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      title: "Man Brown Jacket",
+      title: "Man Item",
       cat:"men"
     },
     {
       id: 3,
-      img: "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      title: "LIGHT JACKETS",
-      cat:"jacket"
+      img: "https://images.pexels.com/photos/3662980/pexels-photo-3662980.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      title: "Kids Item",
+      cat:"kids"
     },
   ];
 

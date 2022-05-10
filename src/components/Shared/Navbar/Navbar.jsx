@@ -63,6 +63,7 @@ const MenuItem = styled.div`
   font-size: 15px;
   cursor: pointer;
   margin-left: 20px;
+
   ${mobile({ fontSize: "12px", marginLeft: "5px" })}
 `;
 
@@ -88,9 +89,13 @@ const Navbar = () => {
           </Logo>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
-          <Link to="/cart">
+          <Link style={{textDecoration:'none', color: "black"}} to="/register">
+            <MenuItem  >REGISTER</MenuItem>
+          </Link>
+          <Link style={{textDecoration:'none', color: "black"}} to="/login">
+            <MenuItem>SIGN IN</MenuItem>
+          </Link>
+          <Link style={{textDecoration:'none', color: "black"}} to="/cart">
             <MenuItem>
               <Badge badgeContent={quantity} color="primary">
                 <ShoppingCartOutlined />

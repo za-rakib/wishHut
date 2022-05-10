@@ -4,6 +4,8 @@ import cover from "../../assets/image/negative-space.jpg";
 import { mobile } from "../../responsive";
 import { login } from "../../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 // style components
 const Container = styled.div`
   width: 100vw;
@@ -49,7 +51,7 @@ const Input = styled.input`
   font-size: 16px;
 `;
 
-const Link = styled.a`
+const ItemLink = styled.div`
   margin: 10px 0;
   font-size: 12px;
   text-decoration: underline;
@@ -61,7 +63,6 @@ const Button = styled.button`
   width: 35%;
   border: 3px solid #fff;
   padding: 12px 15px;
-  background-color: #fff;
   color: #000;
   margin-top: 20px;
   font-size: 16px;
@@ -93,7 +94,7 @@ const Login = () => {
   const handleClick = (e) => {
     e.preventDefault();
     login(dispatch, { userName, password });
-   // console.log(userName, password);
+    // console.log(userName, password);
   };
   return (
     <Container>
@@ -113,8 +114,15 @@ const Login = () => {
             LOGIN
           </Button>
           {error && <Error>Something went wrong...</Error>}
-          <Link>FORGOT PASSWORD ?</Link>
-          <Link>CREATED A NEW ACCOUNT</Link>
+          <ItemLink>FORGOT PASSWORD ?</ItemLink>
+          <ItemLink>
+            <Link
+              style={{ textDecoration: "none", color: "#001eff" }}
+              to="/register"
+            >
+              CREATED A NEW ACCOUNT
+            </Link>
+          </ItemLink>
         </Form>
       </Wrapper>
     </Container>
