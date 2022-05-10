@@ -11,10 +11,10 @@ import {
 //register
 export const register = async (dispatch, user) => {
     dispatch(registerStart());
-    console.log("user",user);
+  //  console.log("user",user);
     try {
         const res = await  publicRequest.post('/auth/register',user)
-        console.log(res);
+     //   console.log(res);
         dispatch(registerSuccess(res.data));
     }
     catch{

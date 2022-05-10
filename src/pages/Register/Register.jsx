@@ -94,7 +94,7 @@ const Register = () => {
       };
     });
   };
-  console.log(registerData.password);
+  //console.log(registerData.password);
 
   useEffect(() => {
     const getUser = async () => {
@@ -109,7 +109,7 @@ const Register = () => {
     getUser();
   }, []);
 
-  console.log(userData);
+ // console.log(userData);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -127,7 +127,7 @@ const Register = () => {
     } else {
       const { confirmPassword, ...rest } = registerData;
       register(dispatch, rest);
-      // alert("Registration Successful");
+       alert("Registration Successful");
     }
   };
   return (
