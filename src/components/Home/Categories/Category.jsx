@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mobile } from "../../../responsive";
+import { scrollToTop } from "../../../requestMethod";
 
 // styled components
 const Container = styled.div`
@@ -43,8 +44,8 @@ const Button = styled.button`
 
 function Category({ item }) {
   return (
-    <Container> 
-      <Link to={`/products/${item.cat}`}>
+    <Container>
+      <Link to={`/products/${item.cat}`} onClick={scrollToTop}>
         <Image src={item.img} />
         <Info>
           <Title>{item.title}</Title>
