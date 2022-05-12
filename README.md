@@ -7,5 +7,6 @@
 Only the admin can access the admin panel.Admin can add, delete, and update products.
 
 2. The customer will be able to order the product. Once the order is completed, you will be able to pay by card.
+3. hhhhhhh 
 ## To view admin activity, log in using this email (Email: admin@gmail.com,pass:123456)
 
