@@ -67,6 +67,12 @@ const MenuItem = styled.div`
   ${mobile({ fontSize: "12px", marginLeft: "5px" })}
 `;
 
+const Profile = styled.div`
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: red;
+`;
 // main function
 const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
@@ -89,19 +95,25 @@ const Navbar = () => {
           </Logo>
         </Center>
         <Right>
-          <Link style={{textDecoration:'none', color: "black"}} to="/register">
-            <MenuItem  >REGISTER</MenuItem>
+          <Link
+            style={{ textDecoration: "none", color: "black" }}
+            to="/register"
+          >
+            <MenuItem>REGISTER</MenuItem>
           </Link>
-          <Link style={{textDecoration:'none', color: "black"}} to="/login">
+          <Link style={{ textDecoration: "none", color: "black" }} to="/login">
             <MenuItem>SIGN IN</MenuItem>
           </Link>
-          <Link style={{textDecoration:'none', color: "black"}} to="/cart">
+          <Link style={{ textDecoration: "none", color: "black" }} to="/cart">
             <MenuItem>
               <Badge badgeContent={quantity} color="primary">
                 <ShoppingCartOutlined />
               </Badge>
             </MenuItem>
           </Link>
+          <MenuItem>
+            <Profile></Profile>
+          </MenuItem>
         </Right>
       </Wrapper>
     </Container>
