@@ -63,7 +63,7 @@ const Slider = () => {
 
               <Link to="/products">
                 {" "}
-                <button>SHOW NOW</button>
+                <button>SHOP NOW</button>
               </Link>
             </div>
           </Slide>

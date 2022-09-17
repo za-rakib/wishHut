@@ -140,7 +140,8 @@ const SingleProduct = () => {
     const getProduct = async () => {
       try {
         const res = await publicRequest.get("/products/find/" + id);
-        setProduct(res.data);
+        console.log({res});
+        setProduct(res?.data);
       } catch (err) {
         console.log(err);
       }
@@ -175,23 +176,23 @@ const SingleProduct = () => {
       <Navbar />
       <Wrapper>
         <ImageContainer>
-          <Image src={product.img} />
+          <Image src={product?.img} />
         </ImageContainer>
         <InfoContainer>
-          <Title>{product.title}</Title>
-          <Desc>{product.desc}</Desc>
-          <Price> $ {product.price}</Price>
+          <Title>{product?.title}</Title>
+          <Desc>{product?.desc}</Desc>
+          <Price> $ {product?.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle> Color</FilterTitle>
-              {product.color?.map((c) => (
+              {product?.color?.map((c) => (
                 <FilterColor color={c} key={c} onClick={() => setColor(c)} />
               ))}
             </Filter>
             <Filter>
               <FilterTitle> Size</FilterTitle>
               <FilterSize onChange={(e) => setSize(e.target.value)}>
-                {product.size?.map((s) => (
+                {product?.size?.map((s) => (
                   <FilterSizeOption key={s}>{s}</FilterSizeOption>
                 ))}
               </FilterSize>

@@ -8,6 +8,7 @@ import Cart from "./pages/Cart/Cart";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Success from "./pages/Success/Success";
 import { useSelector } from "react-redux";
+import Vdr from "./pages/VDR/Vdr";
 
 
 
@@ -25,6 +26,8 @@ function App() {
 
         {/* single product */}
         <Route path="/product/:id" element={<SingleProduct />}></Route>
+          {/*VDR */}
+          <Route path="/vdr" element={<Vdr />}></Route>
         {/* cart */}
         <Route path="/cart" element={user ? <Cart /> : <Login />}></Route>
         <Route path="/success" element={<Success />}></Route>

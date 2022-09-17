@@ -1,19 +1,31 @@
-import { Search, ShoppingCartOutlined } from "@material-ui/icons";
+import {
+  AccountCircleOutlined,
+  Search,
+  ShoppingCartOutlined,
+} from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
 import Badge from "@material-ui/core/Badge";
 import { mobile } from "../../../responsive";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { withStyles } from "@material-ui/core/styles";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import Divider from '@material-ui/core/Divider';
+import ListItemText from "@material-ui/core/ListItemText";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import DraftsIcon from "@material-ui/icons/Drafts";
 
 // styled components
 const Container = styled.div`
-  height: 60px;
+  height: 80px;
   background-color: #f5f5f5;
   ${mobile({ height: "50px" })}
 `;
 const Wrapper = styled.div`
-  padding: 10px 20px;
+  padding: 5px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -59,10 +71,10 @@ const Right = styled.div`
   justify-content: flex-end;
   ${mobile({ flex: 2, justifyContent: "center" })}
 `;
-const MenuItem = styled.div`
+const MenuItem2 = styled.div`
   font-size: 15px;
   cursor: pointer;
-  margin-left: 20px;
+  margin-right: 20px;
 
   ${mobile({ fontSize: "12px", marginLeft: "5px" })}
 `;
@@ -71,12 +83,53 @@ const Profile = styled.div`
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  background-color: red;
+  background-color: #cfcfcf;
 `;
+
+const StyledMenu = withStyles({})((props) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: "bottom",
+      horizontal: "center",
+    }}
+    transformOrigin={{
+      vertical: "top",
+      horizontal: "center",
+    }}
+    {...props}
+  />
+));
+
+const StyledMenuItem = withStyles((theme) => ({
+  root: {
+    "&:focus": {
+      backgroundColor: theme.palette.primary.main,
+      "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
+        color: theme.palette.common.white,
+        padding: "0 15px",
+      },
+    },
+  },
+}))(MenuItem);
+
 // main function
 const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
   // console.log("cart", quantity);
+
+  //mui
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <Container>
       <Wrapper>
@@ -95,24 +148,64 @@ const Navbar = () => {
           </Logo>
         </Center>
         <Right>
+        <Link
+            style={{ textDecoration: "none", color: "black" }}
+            to="/vdr"
+          >
+            <MenuItem2>VDR</MenuItem2>
+          </Link>
           <Link
             style={{ textDecoration: "none", color: "black" }}
             to="/register"
           >
-            <MenuItem>REGISTER</MenuItem>
+            <MenuItem2>REGISTER</MenuItem2>
           </Link>
           <Link style={{ textDecoration: "none", color: "black" }} to="/login">
-            <MenuItem>SIGN IN</MenuItem>
+            <MenuItem2>SIGN IN</MenuItem2>
           </Link>
           <Link style={{ textDecoration: "none", color: "black" }} to="/cart">
-            <MenuItem>
-              <Badge badgeContent={quantity} color="primary">
+            <MenuItem2>
+              <Badge badgeContent={quantity} size={69} color="primary">
                 <ShoppingCartOutlined />
               </Badge>
-            </MenuItem>
+            </MenuItem2>
           </Link>
           <MenuItem>
-            <Profile></Profile>
+            <Profile
+              aria-controls="customized-menu"
+              aria-haspopup="true"
+              variant="contained"
+              color="primary"
+              onClick={handleClick}
+            ></Profile>
+            <StyledMenu
+              id="customized-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <StyledMenuItem>
+                <ListItemIcon>
+                  <AccountCircleOutlined fontSize="medium" />
+                </ListItemIcon>
+                <ListItemText primary="Profile" />
+              </StyledMenuItem>
+
+              <Divider />
+              <StyledMenuItem>
+                <ListItemIcon>
+                  <DraftsIcon fontSize="medium" />
+                </ListItemIcon>
+                <ListItemText primary="Drafts" />
+              </StyledMenuItem>
+              <StyledMenuItem>
+                <ListItemIcon>
+                  <InboxIcon fontSize="medium" />
+                </ListItemIcon>
+                <ListItemText primary="Inbox" />
+              </StyledMenuItem>
+            </StyledMenu>
           </MenuItem>
         </Right>
       </Wrapper>
