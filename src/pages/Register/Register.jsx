@@ -149,11 +149,14 @@ const Register = () => {
           <Input
             onChange={handleChange}
             name="password"
+            type='password'
             placeholder="Password"
+            style={{fontSize:20, WebkitTextSecurity:'circle'}}
           />
           <Input
             onChange={handleChange}
             name="confirmPassword"
+            type='password'
             placeholder="Confirm Password"
           />
           <Agreement>

@@ -4,7 +4,7 @@ const styles = {
   bodyClass: {
     width: "250px",
     height: "500px",
-    background: 'url("images/allbody/bodynew.png")',
+    background: 'url("images/allbody/body.png")',
     position: "absolute",
     top: "12%",
     left: "22%"

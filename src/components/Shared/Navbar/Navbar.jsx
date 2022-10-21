@@ -152,7 +152,7 @@ const Navbar = () => {
             style={{ textDecoration: "none", color: "black" }}
             to="/vdr"
           >
-            <MenuItem2>VDR</MenuItem2>
+            <MenuItem2>Dressing Room</MenuItem2>
           </Link>
           <Link
             style={{ textDecoration: "none", color: "black" }}
